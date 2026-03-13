@@ -11,26 +11,43 @@ body {
     padding: 0;
     background: #fdf6e3;
     color: #333;
+    text-align: center;
 }
 
 header {
     background: #6a9fb5;
     color: white;
     padding: 30px;
-    text-align: center;
 }
 
 h1 {
     margin: 0;
 }
 
-main {
+.main-menu, .story {
     max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
+.menu-button, .nav-button {
+    background: #6a9fb5;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.menu-button:hover, .nav-button:hover {
+    background: #4d7a91;
+}
+
 .story {
+    display: none; /* Tarinat piilossa aluksi */
+    text-align: left;
     background: #fff3e6;
     border-radius: 10px;
     padding: 20px;
@@ -42,21 +59,6 @@ main {
     margin-top: 0;
 }
 
-button {
-    background: #6a9fb5;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
-}
-
-button:hover {
-    background: #4d7a91;
-}
-
 .nav-buttons {
     text-align: center;
     margin-top: 20px;
@@ -66,9 +68,18 @@ button:hover {
 <body>
 
 <header>
-    <h1>Tarinoiden kirja</h1>
-    <p>Navigoi tarinoiden välillä</p>
+<h1>Tarinoiden maailma</h1>
+<p>Valitse tarina luettavaksi</p>
 </header>
+
+<!-- Aloitusvalikko -->
+<div class="main-menu" id="menu">
+    <button class="menu-button" onclick="showStory(1)">Yksinäinen peikko</button>
+    <button class="menu-button" onclick="showStory(2)">Seikkailu aavikolla</button>
+    <button class="menu-button" onclick="showStory(3)">Tähtitaivaan yllä</button>
+    <button class="menu-button" onclick="showStory(4)">Salaperäinen metsä</button>
+    <button class="menu-button" onclick="showStory(5)">Haamun yövierailu</button>
+</div>
 
 <main>
     <!-- Tarinat -->
@@ -77,58 +88,53 @@ button:hover {
         <p>Syvän metsän kätköissä asui pieni peikko nimeltä Piku. Hän oli yksinäinen, sillä muut peikot pelkäsivät hänen uteliaisuuttaan ja erilaisuuttaan. Piku vietti päivät kiipeillen puissa, keräten marjoja ja kuunnellen tuulen huminaa. Eräänä iltana Piku kuuli itkua läheisestä joesta. Uteliaisuus voitti varovaisuuden, ja hän hiipi lähemmäs. Siellä oli pieni orava, joka oli pudonnut pesästään. Piku auttoi sen takaisin puuhun ja huomasi, ettei yksinäisyys tuntunut enää niin raskaalta. Siitä päivästä lähtien Piku sai uusia ystäviä metsästä, ja hän oppi, että rohkeus ja ystävällisyys voivat muuttaa yksinäisenkin sydämen iloiseksi.</p>
     </div>
 
-    <div class="story" id="story2" style="display:none;">
+    <div class="story" id="story2">
         <h2>Seikkailu aavikolla</h2>
         <p>Pieni hiiri nimeltä Muru matkusti aavikon halki etsiessään kadonnutta helmeä. Päivä oli kuuma ja tuulinen, mutta Muru ei luovuttanut. Lopulta hän löysi helmen vanhan tamariskin juurelta ja palasi kotiin sankarina.</p>
     </div>
 
-    <div class="story" id="story3" style="display:none;">
+    <div class="story" id="story3">
         <h2>Tähtitaivaan yllä</h2>
         <p>Yön pimeydessä, kun tähdet loistivat kirkkaasti, pieni kylä valmistautui juhlaan, joka muuttaisi kaikkien elämää. Lapset kulkivat kylän läpi kantaen lyhtyjä ja aikuiset kertoivat tarinoita menneistä ajoista. Tähtitaivas näytti kauneimmalta juuri tänä iltana.</p>
     </div>
 
-    <div class="story" id="story4" style="display:none;">
+    <div class="story" id="story4">
         <h2>Salaperäinen metsä</h2>
         <p>Syvän metsän kätköissä pieni tyttö nimeltä Lumi kulki hiljaa. Hän kuuli oksien rapinaa ja näki valon välkkyvän puiden lomasta. Uteliaisuus ajoi häntä eteenpäin, kunnes hän löysi pienen, kimaltavan lammikon, joka heijasti tähdet kuin peili. Yhtäkkiä lammen pinnasta nousi pieni eläinhahmo, joka puhui salaperäisesti ja lupasi näyttää tien takaisin kotiin, jos Lumi lupaisi palata metsään aina ystävällisin mielin. Lumi nyökkäsi ja tiesi, että tämä metsä kätki tarinoita, joita vain rohkeimmat löytäisivät.</p>
     </div>
 
-    <div class="story" id="story5" style="display:none;">
+    <div class="story" id="story5">
         <h2>Haamun yövierailu</h2>
-        <p>Metsän laidalla, vanhan kartanon takana, liikkui tarinoiden mukaan haamu, joka ilmestyi pimeinä öinä. Ihmiset kertoivat kuulleensa kummallisia ääniä ja nähneet valoja ikkunoissa, vaikka talo oli tyhjä. Eräänä myrskyisenä yönä pieni poika nimeltä Elias kulki kotiin läheisen polun kautta ja huomasi, että kartanon ikkunat välkkyivät oudon sinisen valon sävyssä. Uteliaisuus ajoi häntä lähemmäs, vaikka sydän hakatti kovaa. Hän astui varovasti polulle ja kuuli narisevia askelia, vaikka ympärillä ei ollut ketään. Sitten ovi avautui hitaasti, ja ilmassa leijaili kylmä viima. Sumu nousi maasta, ja hahmo, läpinäkyvä ja hohtava, ilmestyi hänen eteensä. Se ei puhunut, mutta katseessaan oli jotain kummallisen surullista. Elias seisoi paikoillaan, kun haamu liukui hiljaa kartanon käytävillä ja toisti vanhaa laulunpätkää, joka tuntui kantautuvan vuosisatojen takaa. Yhtäkkiä tuuli koveni ja ovet paukkuivat, mutta Elias ei pelännyt enää yhtä paljon. Hän ymmärsi, että haamu ei ollut paha, vaan yksinäinen sielu, joka etsi vain huomiota ja seurustelua. Yön kuluessa Elias seurasi haamua hiljaa, kuunnellen sen tarinaa, jonka vain metsän hiljaisuus ja tuuli saattoivat kertoa. Kun aamu valkeni, hahmo katosi yhtä äkkiä kuin oli tullutkin, jättäen jälkeensä vain hentoa kylmyyttä ja muiston siitä, että jokaisella sielulla, oli se sitten elävä tai kuollut, on tarinansa. Elias palasi kotiin, ja sydämessään hän kantoi uuden ymmärryksen pelosta ja ystävyydestä, tietäen että joskus pelko voi muuttua uteliaisuudeksi ja yksinäisyys löytää ystävän, vaikka tämä olisi tuonpuoleisesta maailmasta.</p>
+        <p>Metsän laidalla, vanhan kartanon takana, liikkui tarinoiden mukaan haamu, joka ilmestyi pimeinä öinä. Ihmiset kertoivat kuulleensa kummallisia ääniä ja nähneet valoja ikkunoissa, vaikka talo oli tyhjä. Eräänä myrskyisenä yönä pieni poika nimeltä Elias kulki kotiin läheisen polun kautta ja huomasi, että kartanon ikkunat välkkyivät oudon sinisen valon sävyssä. Uteliaisuus ajoi häntä lähemmäs, vaikka sydän hakatti kovaa. Hän astui varovasti polulle ja kuuli narisevia askelia, vaikka ympärillä ei ollut ketään. Sitten ovi avautui hitaasti, ja ilmassa leijaili kylmä viima. Sumu nousi maasta, ja hahmo, läpinäkyvä ja hohtava, ilmestyi hänen eteensä. Se ei puhunut, mutta katseessaan oli jotain kummallisen surullista. Elias seisoi paikoillaan, kun haamu liukui hiljaa kartanon käytävillä ja toisti vanhaa laulunpätkää, joka tuntui kantautuvan vuosisatojen takaa. Yhtäkkiä tuuli koveni ja ovet paukkuivat, mutta Elias ei pelännyt enää yhtä paljon. Hän ymmärsi, että haamu ei ollut paha, vaan yksinäinen sielu, joka etsi vain huomiota ja seurustelua.</p>
     </div>
 
-    <!-- Navigointinapit -->
     <div class="nav-buttons">
-        <button onclick="previousStory()">« Edellinen</button>
-        <button onclick="nextStory()">Seuraava »</button>
+        <button class="nav-button" onclick="backToMenu()">« Takaisin valikkoon</button>
     </div>
 </main>
 
 <script>
-let current = 1;
-const totalStories = 5;
-
 function showStory(id) {
-    for (let i = 1; i <= totalStories; i++) {
-        document.getElementById('story' + i).style.display = 'none';
+    // Piilota valikko
+    document.getElementById('menu').style.display = 'none';
+    // Piilota kaikki tarinat
+    const totalStories = 5;
+    for(let i = 1; i <= totalStories; i++){
+        document.getElementById('story'+i).style.display = 'none';
     }
-    document.getElementById('story' + id).style.display = 'block';
+    // Näytä valittu tarina
+    document.getElementById('story'+id).style.display = 'block';
 }
 
-function nextStory() {
-    current++;
-    if (current > totalStories) current = 1; // kiertää ensimmäiseen
-    showStory(current);
+function backToMenu() {
+    // Piilota tarinat
+    const totalStories = 5;
+    for(let i = 1; i <= totalStories; i++){
+        document.getElementById('story'+i).style.display = 'none';
+    }
+    // Näytä valikko
+    document.getElementById('menu').style.display = 'block';
 }
-
-function previousStory() {
-    current--;
-    if (current < 1) current = totalStories; // kiertää viimeiseen
-    showStory(current);
-}
-
-// Näytetään ensimmäinen tarina alussa
-showStory(current);
 </script>
 
 </body>
